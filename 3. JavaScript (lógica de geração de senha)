@@ -1,0 +1,23 @@
+function gerarSenha() {
+  const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+  let senha = '';
+  const tamanhoSenha = 12; // Tamanho da senha gerada
+
+  for (let i = 0; i < tamanhoSenha; i++) {
+    const indice = Math.floor(Math.random() * caracteres.length);
+    senha += caracteres.charAt(indice);
+  }
+
+  document.getElementById('senha').textContent = senha;
+}
+
+function copiarSenha() {
+  const senha = document.getElementById('senha').textContent;
+  if (senha) {
+    navigator.clipboard.writeText(senha).then(() => {
+      alert("Senha copiada para a área de transferência!");
+    });
+  } else {
+    alert("Primeiro, gere uma senha!");
+  }
+}
